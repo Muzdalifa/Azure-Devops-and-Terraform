@@ -3,6 +3,15 @@ provider "azurerm"{
     features {}
 }
 
+terraform{
+    backend "azurerm"{
+        resource_group_name = "terraform_resource_group_blobstore"
+        storage_account_name = "tfstoragemuzdalifa"
+        container_name = "tfstate"
+        key = "terraform.tfstate"
+    }
+}
+
 resource "azurerm_resource_group" "terraform_test" {
     name = "terraform_main_resource_group"
     location = "West Europe"
